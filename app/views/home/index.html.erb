@@ -1,1 +1,9 @@
 <h1>Galpões & Estoque</h1>
+
+<h2>Galpões</h2>
+<% @warehouses.each do |shed| %>
+  <%= shed.name %>
+  <%= "code: #{shed.code}" %>
+  <%= "city: #{shed.city}" %>
+  <%= "#{shed.city} m2" %>
+<% end %>
