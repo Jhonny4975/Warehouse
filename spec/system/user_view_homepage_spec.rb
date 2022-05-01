@@ -16,7 +16,8 @@ describe 'User visits home screen' do
 
   it 'the user should see the registered sheds' do
     expect(page).to have_content(shed.name)
-    expect(page).to have_content(shed.city)
-    expect(page).to have_content(shed.area)
+    expect(page).to have_content("code: #{shed.code}")
+    expect(page).to have_content("city: #{shed.city}")
+    expect(page).to have_content("#{shed.city} m2")
   end
 end
