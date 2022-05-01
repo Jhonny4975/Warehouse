@@ -2,6 +2,14 @@
 
 class HomeController < ApplicationController
   def index
-    @warehouses = Shed.all
+    Shed.all.then do |sheds|
+      if sheds.empty?
+        @warehouses = []
+
+        flash[:notice] = 'there is no registered shed'
+      else
+        @warehouses = sheds
+      end
+    end
   end
 end
