@@ -3,9 +3,20 @@
 require 'rails_helper'
 
 describe 'User visits home screen' do
-  it 'must see app name' do
-    visit('/')
+  let(:shed) { create(:shed) }
 
+  before do
+    shed
+    visit('/')
+  end
+
+  it 'must see app name' do
     expect(page).to have_content('Galpões & Estoque')
+  end
+
+  it 'the user should see the registered sheds' do
+    expect(page).to have_content(shed.name)
+    expect(page).to have_content(shed.city)
+    expect(page).to have_content(shed.area)
   end
 end
