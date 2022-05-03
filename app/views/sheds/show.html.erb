@@ -1,0 +1,10 @@
+<h1>Shed <%= @shed.code %></h1>
+<h2><%= "Description: #{@shed.description}" %></h2>
+<div>
+  <strong>Name: </strong><%= @shed.name %>
+  <strong>City: </strong><%= @shed.city %>
+  <strong>Area: </strong><%= @shed.area %> m2
+  <strong>Address: </strong><%= @shed.address %><strong>, postcode: </strong><%= @shed.postcode %>
+</div>
+
+<%= link_to 'Home', root_path %>

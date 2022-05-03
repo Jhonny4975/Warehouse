@@ -2,7 +2,7 @@
 
 <h2>Galpões</h2>
 <% @warehouses.each do |shed| %>
-  <%= shed.name %>
+  <%= link_to shed.name, shed_path(shed.id) %>
   <%= "code: #{shed.code}" %>
   <%= "city: #{shed.city}" %>
   <%= "#{shed.area} m2" %>
