@@ -29,11 +29,8 @@ describe 'User visits home screen' do
   context 'when there are no sheds' do
     before { home }
 
-    it 'must see app name' do
-      expect(page).to have_content('Galpões & Estoque')
-    end
-
     it 'User sees a message' do
+      expect(page).to have_content('Galpões & Estoque')
       expect(page).to have_content('there is no registered shed')
     end
   end

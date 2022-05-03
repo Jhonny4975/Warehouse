@@ -19,7 +19,8 @@ describe 'User accesses the details of a shed' do
     expect(page).to have_content("Name: #{shed.name}")
     expect(page).to have_content("City: #{shed.city}")
     expect(page).to have_content("Area: #{shed.area} m2")
-    expect(page).to have_content("Address: #{shed.address}, postcode: #{shed.postcode}")
+    expect(page).to have_content("Address: #{shed.address}")
+    expect(page).to have_content("Postcode: #{shed.postcode}")
     expect(page).to have_content("Description: #{shed.description}")
     expect(page).to have_link('Home')
   end
