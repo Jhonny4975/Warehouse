@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 describe 'User visits home screen' do
-  subject(:home) { visit('/') }
+  subject(:home) { visit root_path }
 
   context 'when there are sheds' do
     let(:shed) { create(:shed) }
