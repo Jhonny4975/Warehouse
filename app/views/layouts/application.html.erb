@@ -10,11 +10,15 @@
   </head>
 
   <body>
-    <div>
-      <% if flash.any? %>
-        <%= render 'shared/messages' %><br>
-      <% end %>
-    </div>
+    <header>
+      <h1>Galpões & Estoque</h1>
+    </header>
+    <main>
+    <% if flash.any? %>
+      <%= render 'shared/messages' %><br>
+    <% end %>
+
     <%= yield %>
+    </main>
   </body>
 </html>
