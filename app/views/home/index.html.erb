@@ -1,9 +1,16 @@
-<h1>Galpões & Estoque</h1>
-
-<h2>Galpões</h2>
-<% @warehouses.each do |shed| %>
-  <%= link_to shed.name, shed_path(shed.id) %>
-  <%= "code: #{shed.code}" %>
-  <%= "city: #{shed.city}" %>
-  <%= "#{shed.area} m2" %>
-<% end %>
+<section id='sheds'>
+  <h2>Galpões</h2>
+  <% @warehouses.each do |shed| %>
+  <div>
+    <h3><%= link_to shed.name, shed_path(shed.id) %></h3>
+    <dl>
+      <dt>code: </dt>
+      <dd><%= shed.code %></dd>
+      <dt>city: </dt>
+      <dd><%= shed.city %></dd>
+      <dt>Area: </dt>
+      <dd><%= shed.area %> m2</dd>
+    </dl>
+    </div>
+  <% end %>
+</section>

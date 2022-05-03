@@ -1,10 +1,18 @@
 <h1>Shed <%= @shed.code %></h1>
 <h2><%= "Description: #{@shed.description}" %></h2>
-<div>
-  <strong>Name: </strong><%= @shed.name %>
-  <strong>City: </strong><%= @shed.city %>
-  <strong>Area: </strong><%= @shed.area %> m2
-  <strong>Address: </strong><%= @shed.address %><strong>, postcode: </strong><%= @shed.postcode %>
-</div>
+<details>
+  <dl>
+    <dt><strong>Name: </strong></dt>
+    <dd><%= @shed.name %></dd>
+    <dt><strong>City: </strong></dt>
+    <dd><%= @shed.city %></dd>
+    <dt><strong>Area: </strong></dt>
+    <dd><%= @shed.area %> m2</dd>
+    <dt><strong>Address: </strong></dt>
+    <dd><%= @shed.address %></dd>
+    <dt><strong>Postcode: </strong></dt>
+    <dd><%= @shed.postcode %></dd>
+  </dl>
+</details><br>
 
 <%= link_to 'Home', root_path %>
