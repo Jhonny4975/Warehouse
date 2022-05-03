@@ -22,7 +22,7 @@ describe 'User visits home screen' do
       expect(page).to have_content(shed.name)
       expect(page).to have_content("code: #{shed.code}")
       expect(page).to have_content("city: #{shed.city}")
-      expect(page).to have_content("#{shed.city} m2")
+      expect(page).to have_content("#{shed.area} m2")
     end
   end
 
