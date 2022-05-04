@@ -3,5 +3,5 @@
 Rails.application.routes.draw do
   root 'home#index'
 
-  resources :sheds, only: %i[show]
+  resources :sheds, only: %i[show new create]
 end
