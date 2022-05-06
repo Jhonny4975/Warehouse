@@ -14,15 +14,15 @@ describe 'User visits home screen' do
     end
 
     it 'must see app name' do
-      expect(page).to have_content('Galpões & Estoque')
+      expect(page).to have_content 'Galpões & Estoque'
     end
 
     it 'the user should see the registered sheds' do
-      expect(page).not_to have_content('there is no registered shed')
-      expect(page).to have_content(shed.name)
-      expect(page).to have_content("code: #{shed.code}")
-      expect(page).to have_content("city: #{shed.city}")
-      expect(page).to have_content("#{shed.area} m2")
+      expect(page).not_to have_content 'there is no registered shed'
+      expect(page).to have_content registered_shed.name
+      expect(page).to have_content "Code: #{registered_shed.code}"
+      expect(page).to have_content "City: #{registered_shed.city}"
+      expect(page).to have_content "Area: #{registered_shed.area} m²"
     end
   end
 
@@ -30,8 +30,8 @@ describe 'User visits home screen' do
     before { home }
 
     it 'User sees a message' do
-      expect(page).to have_content('Galpões & Estoque')
-      expect(page).to have_content('there is no registered shed')
+      expect(page).to have_content 'Galpões & Estoque'
+      expect(page).to have_content 'there is no registered shed'
     end
   end
 end
