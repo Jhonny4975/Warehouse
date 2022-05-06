@@ -36,7 +36,7 @@ describe 'User accesses warehouse register' do
   it 'and register a shed' do
     post
 
-    expect(page).to have_current_path shed_path(Shed.first.id)
+    expect(page).to have_current_path shed_path(Shed.last.id)
     expect(page).to have_content 'shed successfully registered!'
   end
 end

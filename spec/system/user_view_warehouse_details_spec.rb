@@ -15,19 +15,19 @@ describe 'User accesses the details of a shed' do
   end
 
   it 'Must see additional information' do
-    expect(page).to have_content("Shed #{shed.code}")
-    expect(page).to have_content("Name: #{shed.name}")
-    expect(page).to have_content("City: #{shed.city}")
-    expect(page).to have_content("Area: #{shed.area} m2")
-    expect(page).to have_content("Address: #{shed.address}")
-    expect(page).to have_content("Postcode: #{shed.postcode}")
-    expect(page).to have_content("Description: #{shed.description}")
-    expect(page).to have_link('Home')
+    expect(page).to have_content "Shed #{registered_shed.code}"
+    expect(page).to have_content "Name: #{registered_shed.name}"
+    expect(page).to have_content "City: #{registered_shed.city}"
+    expect(page).to have_content "Area: #{registered_shed.area} m2"
+    expect(page).to have_content "Address: #{registered_shed.address}"
+    expect(page).to have_content "Postcode: #{registered_shed.postcode}"
+    expect(page).to have_content "Description: #{registered_shed.description}"
+    expect(page).to have_link 'Home'
   end
 
   it 'the user returns to the home screen' do
     click_on 'Home'
 
-    expect(page).to have_current_path(root_path)
+    expect(page).to have_current_path root_path
   end
 end
