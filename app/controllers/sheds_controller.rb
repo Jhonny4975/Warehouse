@@ -10,10 +10,14 @@ class ShedsController < ApplicationController
   end
 
   def create
-    Shed.create!(shed_params).then do |shed|
-      flash[:notice] = 'shed successfully registered!'
+    Shed.new(shed_params).then do |shed|
+      if shed.save
+        redirect_to shed_path(shed.id), notice: 'shed successfully registered!'
+      else
+        flash.now[:notice] = 'invalid information, review the fields!'
 
-      redirect_to shed_path(shed.id)
+        render :new
+      end
     end
   end
 
