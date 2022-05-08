@@ -9,4 +9,5 @@ class Shed < ApplicationRecord
             :postcode,
             :description, presence: true
   validates :code, length: { is: 3 }
+  validates :code, uniqueness: true
 end
