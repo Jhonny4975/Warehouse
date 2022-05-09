@@ -43,6 +43,14 @@ describe 'User accesses warehouse register' do
 
       expect(page).to have_current_path sheds_path
       expect(page).to have_content 'Não foi possivel cadastrar o galpão.'
+      expect(page).to have_content 'Nome não pode ficar em branco'
+      expect(page).to have_content 'Código não pode ficar em branco'
+      expect(page).to have_content 'Cidade não pode ficar em branco'
+      expect(page).to have_content 'Área não pode ficar em branco'
+      expect(page).to have_content 'Endereço não pode ficar em branco'
+      expect(page).to have_content 'Código postal não pode ficar em branco'
+      expect(page).to have_content 'Descrição não pode ficar em branco'
+      expect(page).to have_content 'Código não possui o tamanho esperado (3 caracteres)'
     end
 
     it 'with invalid params' do
@@ -61,6 +69,7 @@ describe 'User accesses warehouse register' do
 
       expect(page).to have_current_path sheds_path
       expect(page).to have_content 'Não foi possivel cadastrar o galpão.'
+      expect(page).to have_content 'Código não possui o tamanho esperado (3 caracteres)'
     end
   end
 end
