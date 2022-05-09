@@ -1,0 +1,13 @@
+pt-BR:
+  activerecord:
+    models:
+      shed: 'Galpão'
+    attributes:
+      shed:
+        name: 'Nome'
+        code: 'Código'
+        city: 'Cidade'
+        area: 'Área'
+        address: 'Endereço'
+        postcode: 'Código postal'
+        description: 'Descrição'
