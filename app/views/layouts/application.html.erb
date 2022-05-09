@@ -14,11 +14,12 @@
       <h1>Galpões & Estoque</h1>
     </header>
     <main>
-    <% if flash.any? %>
-      <%= render 'shared/messages' %><br>
-    <% end %>
+      <% if flash.any? %>
+        <%= render 'shared/messages' %><br>
+      <% end %>
 
-    <%= yield %>
+      <%= yield %>
+      <%= link_to 'Home', root_path %>
     </main>
   </body>
 </html>
