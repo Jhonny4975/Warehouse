@@ -10,14 +10,14 @@ class ShedsController < ApplicationController
   end
 
   def create
-    Shed.new(shed_params).then do |shed|
-      if shed.save
-        redirect_to shed_path(shed.id), notice: 'shed successfully registered!'
-      else
-        flash.now[:notice] = 'invalid information, review the fields!'
+    @shed = Shed.new(shed_params)
 
-        render :new
-      end
+    if @shed.save
+      redirect_to shed_path(@shed.id), notice: 'Galpão cadastrado com sucesso!'
+    else
+      flash.now[:notice] = 'Não foi possivel cadastrar o galpão.'
+
+      render :new
     end
   end
 

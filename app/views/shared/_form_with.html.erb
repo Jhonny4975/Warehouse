@@ -1,26 +1,26 @@
 <%= form_with model: shed do |form| %>
   <div>
-    <%= form.text_field :name, placeholder: 'Name:' %><br>
+    <%= form.text_field :name, placeholder: 'Nome:' %><br>
   </div>
   <div>
-    <%= form.text_area :description, placeholder: 'Description:' %><br>
+    <%= form.text_area :description, placeholder: 'Descrição:' %><br>
   </div>
   <div>
-    <%= form.text_field :code, placeholder: 'Code:' %><br>
+    <%= form.text_field :code, placeholder: 'Código:' %><br>
   </div>
   <div>
-    <%= form.text_field :address, placeholder: 'Address:' %><br>
+    <%= form.text_field :address, placeholder: 'Endereço:' %><br>
   </div>
   <div>
-    <%= form.text_field :city, placeholder: 'City:' %><br>
+    <%= form.text_field :city, placeholder: 'Cidade:' %><br>
   </div>
   <div>
-    <%= form.text_field :postcode, placeholder: 'Postcode:' %><br>
+    <%= form.text_field :postcode, placeholder: 'Código postal:' %><br>
   </div>
   <div>
-    <%= form.number_field :area, placeholder: 'Area:' %><br>
+    <%= form.number_field :area, placeholder: 'Área:' %><br>
   </div>
   <div>
-    <%= form.submit 'Save' %>
+    <%= form.submit %>
   </div>
 <% end %>

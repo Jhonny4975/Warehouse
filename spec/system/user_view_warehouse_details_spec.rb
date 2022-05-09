@@ -9,13 +9,13 @@ describe 'User accesses the details of a shed' do
     visit root_path
     click_on registered_shed.name
 
-    expect(page).to have_content "Shed #{registered_shed.code}"
-    expect(page).to have_content "Name: #{registered_shed.name}"
-    expect(page).to have_content "City: #{registered_shed.city}"
-    expect(page).to have_content "Area: #{registered_shed.area} m2"
-    expect(page).to have_content "Address: #{registered_shed.address}"
-    expect(page).to have_content "Postcode: #{registered_shed.postcode}"
-    expect(page).to have_content "Description: #{registered_shed.description}"
+    expect(page).to have_content "Galpão #{registered_shed.code}"
+    expect(page).to have_content "Nome: #{registered_shed.name}"
+    expect(page).to have_content "Cidade: #{registered_shed.city}"
+    expect(page).to have_content "Área: #{registered_shed.area} m2"
+    expect(page).to have_content "Endereço: #{registered_shed.address}"
+    expect(page).to have_content "Código postal: #{registered_shed.postcode}"
+    expect(page).to have_content "Descrição: #{registered_shed.description}"
     expect(page).to have_link 'Home'
   end
 
