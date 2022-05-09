@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 class ShedsController < ApplicationController
+  before_action :set_shed, only: %i[show edit update destroy]
+
   def new
     @shed = Shed.new
   end
 
-  def show
-    @shed = Shed.find(params[:id])
-  end
+  def show; end
 
   def create
     @shed = Shed.new(shed_params)
@@ -21,13 +21,9 @@ class ShedsController < ApplicationController
     end
   end
 
-  def edit
-    @shed = Shed.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @shed = Shed.find(params[:id])
-
     if @shed.update(shed_params)
       redirect_to shed_path(@shed.id), notice: 'Galpão atualizado com sucesso!'
     else
@@ -35,6 +31,13 @@ class ShedsController < ApplicationController
 
       render :edit
     end
+  end
+
+  def destroy
+    @shed.destroy
+
+    flash[:notice] = 'Galpão excluído com sucesso!'
+    redirect_to root_path
   end
 
   private
@@ -49,5 +52,9 @@ class ShedsController < ApplicationController
       :postcode,
       :description
     )
+  end
+
+  def set_shed
+    @shed = Shed.find(params[:id])
   end
 end
