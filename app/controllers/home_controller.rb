@@ -4,11 +4,11 @@ class HomeController < ApplicationController
   def index
     Shed.all.then do |sheds|
       if sheds.empty?
-        @warehouses = []
+        @sheds = []
 
-        flash[:notice] = 'there is no registered shed'
+        flash[:notice] = 'Não há nenhum galpão cadastrado...'
       else
-        @warehouses = sheds
+        @sheds = sheds
       end
     end
   end

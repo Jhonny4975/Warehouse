@@ -5,62 +5,62 @@ require 'rails_helper'
 describe 'User accesses warehouse register' do
   it 'and should see registration fields' do
     visit root_path
-    click_on 'register shed'
+    click_on 'Cadastrar galpão'
 
     expect(page).to have_current_path new_shed_path
-    expect(page).to have_field 'Name:'
-    expect(page).to have_field 'Description:'
-    expect(page).to have_field 'Code:'
-    expect(page).to have_field 'Address:'
-    expect(page).to have_field 'City:'
-    expect(page).to have_field 'Postcode:'
-    expect(page).to have_field 'Area:'
+    expect(page).to have_field 'Nome:'
+    expect(page).to have_field 'Descrição:'
+    expect(page).to have_field 'Código:'
+    expect(page).to have_field 'Endereço:'
+    expect(page).to have_field 'Cidade:'
+    expect(page).to have_field 'Código postal:'
+    expect(page).to have_field 'Área:'
   end
 
   context 'when to fill in the fields' do
     it 'with valid params' do
       visit root_path
-      click_on 'register shed'
-      fill_in 'Name:', with: Faker::Company.name
-      fill_in 'Code:', with: Faker::Address.country_code_long
-      fill_in 'City:', with: Faker::Address.city
-      fill_in 'Area:', with: Faker::Number.decimal(l_digits: 2, r_digits: 3)
-      fill_in 'Address:', with: Faker::Address.street_address
-      fill_in 'Postcode:', with: Faker::Address.postcode
-      fill_in 'Description:', with: Faker::Lorem.paragraph
-      click_on 'Save'
+      click_on 'Cadastrar galpão'
+      fill_in 'Nome:', with: Faker::Company.name
+      fill_in 'Código:', with: Faker::Address.country_code_long
+      fill_in 'Cidade:', with: Faker::Address.city
+      fill_in 'Área:', with: Faker::Number.decimal(l_digits: 2, r_digits: 3)
+      fill_in 'Endereço:', with: Faker::Address.street_address
+      fill_in 'Código postal:', with: Faker::Address.postcode
+      fill_in 'Descrição:', with: Faker::Lorem.paragraph
+      click_on 'Criar Galpão'
 
       expect(page).to have_current_path shed_path(Shed.last.id)
-      expect(page).to have_content 'shed successfully registered!'
+      expect(page).to have_content 'Galpão cadastrado com sucesso!'
     end
 
     it 'with empty params' do
       visit root_path
-      click_on 'register shed'
-      fill_in 'Name:', with: ''
-      fill_in 'Description:', with: ''
-      click_on 'Save'
+      click_on 'Cadastrar galpão'
+      fill_in 'Nome:', with: ''
+      fill_in 'Descrição:', with: ''
+      click_on 'Criar Galpão'
 
       expect(page).to have_current_path sheds_path
-      expect(page).to have_content 'invalid information, review the fields'
+      expect(page).to have_content 'Não foi possivel cadastrar o galpão.'
     end
 
     it 'with invalid params' do
       invalid_field = 'invalid value'
 
       visit root_path
-      click_on 'register shed'
-      fill_in 'Name:', with: Faker::Company.name
-      fill_in 'Description:', with: Faker::Address.country_code_long
-      fill_in 'Code:', with: invalid_field
-      fill_in 'Address:', with: invalid_field
-      fill_in 'City:', with: Faker::Address.street_address
-      fill_in 'Postcode:', with: invalid_field
-      fill_in 'Area:', with: invalid_field
-      click_on 'Save'
+      click_on 'Cadastrar galpão'
+      fill_in 'Nome:', with: Faker::Company.name
+      fill_in 'Descrição:', with: Faker::Address.country_code_long
+      fill_in 'Código:', with: invalid_field
+      fill_in 'Endereço:', with: invalid_field
+      fill_in 'Cidade:', with: Faker::Address.street_address
+      fill_in 'Código postal:', with: invalid_field
+      fill_in 'Área:', with: invalid_field
+      click_on 'Criar Galpão'
 
       expect(page).to have_current_path sheds_path
-      expect(page).to have_content 'invalid information, review the fields'
+      expect(page).to have_content 'Não foi possivel cadastrar o galpão.'
     end
   end
 end

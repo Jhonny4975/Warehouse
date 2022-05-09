@@ -17,11 +17,11 @@ describe 'User visits home screen' do
 
       visit root_path
 
-      expect(page).not_to have_content 'there is no registered shed'
+      expect(page).not_to have_content 'Não há nenhum galpão cadastrado...'
       expect(page).to have_content registered_shed.name
-      expect(page).to have_content "Code: #{registered_shed.code}"
-      expect(page).to have_content "City: #{registered_shed.city}"
-      expect(page).to have_content "Area: #{registered_shed.area} m²"
+      expect(page).to have_content "Código: #{registered_shed.code}"
+      expect(page).to have_content "Cidade: #{registered_shed.city}"
+      expect(page).to have_content "Área: #{registered_shed.area} m²"
     end
   end
 
@@ -30,7 +30,7 @@ describe 'User visits home screen' do
       visit root_path
 
       expect(page).to have_content 'Galpões & Estoque'
-      expect(page).to have_content 'there is no registered shed'
+      expect(page).to have_content 'Não há nenhum galpão cadastrado...'
     end
   end
 end

@@ -1,19 +1,19 @@
 <section id='sheds'>
   <h2>Galpões</h2>
-  <% @warehouses.each do |shed| %>
+  <% @sheds.each do |shed| %>
   <div>
     <h3><%= link_to shed.name, shed_path(shed.id) %></h3>
     <dl>
-      <dt>Code: </dt>
+      <dt>Código: </dt>
       <dd><%= shed.code %></dd>
-      <dt>City: </dt>
+      <dt>Cidade: </dt>
       <dd><%= shed.city %></dd>
-      <dt>Area: </dt>
+      <dt>Área: </dt>
       <dd><%= shed.area %> m²</dd>
     </dl>
     </div>
   <% end %>
   <div>
-    <%= link_to 'register shed', new_shed_path %>
+    <%= link_to 'Cadastrar galpão', new_shed_path %>
   </div>
 </section>
