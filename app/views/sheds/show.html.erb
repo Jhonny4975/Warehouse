@@ -14,6 +14,9 @@
     <dd><%= @shed.postcode %></dd>
   </dl>
 </details><br>
-
-<%= link_to 'Editar', edit_shed_path(@shed.id) %>
-<%= link_to 'Home', root_path %>
+<div>
+  <button type="button">
+    <%= link_to 'Editar', edit_shed_path(@shed.id) %>
+    <%= button_to 'Deletar Galpão', shed_path(@shed.id), method: :delete %>
+  </button>
+</div>
