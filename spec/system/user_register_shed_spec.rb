@@ -26,7 +26,7 @@ describe 'User accesses warehouse register' do
       fill_in 'Cidade:', with: Faker::Address.city
       fill_in 'Área:', with: Faker::Number.decimal(l_digits: 2, r_digits: 3)
       fill_in 'Endereço:', with: Faker::Address.street_address
-      fill_in 'Código postal:', with: Faker::Address.postcode
+      fill_in 'Código postal:', with: %w[01234-567 08652-300 78451-123].sample
       fill_in 'Descrição:', with: Faker::Lorem.paragraph
       click_on 'Criar Galpão'
 
@@ -61,7 +61,7 @@ describe 'User accesses warehouse register' do
       fill_in 'Nome:', with: Faker::Company.name
       fill_in 'Descrição:', with: Faker::Address.country_code_long
       fill_in 'Código:', with: invalid_field
-      fill_in 'Endereço:', with: invalid_field
+      fill_in 'Endereço:', with: Faker::Address.street_address
       fill_in 'Cidade:', with: Faker::Address.street_address
       fill_in 'Código postal:', with: invalid_field
       fill_in 'Área:', with: invalid_field
@@ -70,6 +70,8 @@ describe 'User accesses warehouse register' do
       expect(page).to have_current_path sheds_path
       expect(page).to have_content 'Não foi possivel cadastrar o galpão.'
       expect(page).to have_content 'Código não possui o tamanho esperado (3 caracteres)'
+      expect(page).to have_content 'Código postal deve ter o formato: 00000-000'
+      expect(page).to have_content 'Área não é um número'
     end
   end
 end

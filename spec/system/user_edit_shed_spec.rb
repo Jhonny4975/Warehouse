@@ -30,9 +30,9 @@ describe 'User edit a shed' do
       fill_in 'Nome:', with: 'my name'
       fill_in 'Código:', with: 'UFC'
       fill_in 'Cidade:', with: 'my city'
-      fill_in 'Área:', with: '10000'
+      fill_in 'Área:', with: 10_000
       fill_in 'Endereço:', with: 'my address'
-      fill_in 'Código postal:', with: 'my postal code'
+      fill_in 'Código postal:', with: '01234-567'
       fill_in 'Descrição:', with: 'my description'
       click_on 'Atualizar Galpão'
 
@@ -43,7 +43,7 @@ describe 'User edit a shed' do
       expect(page).to have_content 'Cidade: my city'
       expect(page).to have_content 'Área: 10000 m2'
       expect(page).to have_content 'Endereço: my address'
-      expect(page).to have_content 'Código postal: my postal code'
+      expect(page).to have_content 'Código postal: 01234-567'
       expect(page).to have_content 'Descrição: my description'
     end
 
@@ -82,7 +82,7 @@ describe 'User edit a shed' do
       fill_in 'Nome:', with: Faker::Company.name
       fill_in 'Descrição:', with: Faker::Address.country_code_long
       fill_in 'Código:', with: invalid_field
-      fill_in 'Endereço:', with: invalid_field
+      fill_in 'Endereço:', with: Faker::Address.street_address
       fill_in 'Cidade:', with: Faker::Address.street_address
       fill_in 'Código postal:', with: invalid_field
       fill_in 'Área:', with: invalid_field
@@ -91,6 +91,8 @@ describe 'User edit a shed' do
       expect(page).to have_current_path shed_path(registered_shed.id)
       expect(page).to have_content 'Não foi possivel atualizar o galpão.'
       expect(page).to have_content 'Código não possui o tamanho esperado (3 caracteres)'
+      expect(page).to have_content 'Código postal deve ter o formato: 00000-000'
+      expect(page).to have_content 'Área não é um número'
     end
   end
 end
