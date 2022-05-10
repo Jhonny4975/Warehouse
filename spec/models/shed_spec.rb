@@ -16,9 +16,11 @@ RSpec.describe Shed, type: :model do
 
     context 'with length' do
       it { is_expected.to validate_length_of(:code).is_equal_to(3) }
+      it { is_expected.to validate_numericality_of(:area).is_greater_than(20) }
     end
 
     context 'with uniqueness' do
+      it { is_expected.to validate_uniqueness_of(:name) }
       it { is_expected.to validate_uniqueness_of(:code) }
     end
   end
@@ -60,8 +62,9 @@ RSpec.describe Shed, type: :model do
         shed = described_class.new(attributes_for(:shed, area: ''))
 
         expect(shed).not_to be_valid
-        expect(shed.errors.full_messages.length).to eq 1
-        expect(shed.errors.full_messages.last).to eq 'Área não pode ficar em branco'
+        expect(shed.errors.full_messages.length).to eq 2
+        expect(shed.errors.full_messages.first).to eq 'Área não pode ficar em branco'
+        expect(shed.errors.full_messages.last).to eq 'Área não é um número'
       end
 
       it 'invalid when address is not present' do
@@ -76,8 +79,9 @@ RSpec.describe Shed, type: :model do
         shed = described_class.new(attributes_for(:shed, postcode: ''))
 
         expect(shed).not_to be_valid
-        expect(shed.errors.full_messages.length).to eq 1
-        expect(shed.errors.full_messages.last).to eq 'Código postal não pode ficar em branco'
+        expect(shed.errors.full_messages.length).to eq 2
+        expect(shed.errors.full_messages.first).to eq 'Código postal não pode ficar em branco'
+        expect(shed.errors.full_messages.last).to eq 'Código postal deve ter o formato: 00000-000'
       end
 
       it 'invalid when description is not present' do
@@ -97,6 +101,55 @@ RSpec.describe Shed, type: :model do
         expect(second_shed).not_to be_valid
         expect(second_shed.errors.full_messages.length).to eq 1
         expect(second_shed.errors.full_messages.last).to eq 'Código já está em uso'
+      end
+
+      it 'invalid when name is already in use' do
+        create(:shed, name: 'ASU')
+        second_shed = described_class.new(attributes_for(:shed, name: 'ASU'))
+
+        expect(second_shed).not_to be_valid
+        expect(second_shed.errors.full_messages.length).to eq 1
+        expect(second_shed.errors.full_messages.last).to eq 'Nome já está em uso'
+      end
+    end
+
+    context 'with length' do
+      it 'invalid when the area is not greater than 20' do
+        shed = described_class.new(attributes_for(:shed, area: 1))
+
+        expect(shed).not_to be_valid
+        expect(shed.errors.full_messages.length).to eq 1
+        expect(shed.errors.full_messages.last).to eq 'Área deve ser maior que 20'
+      end
+
+      it 'invalid when code length is not 3' do
+        error_message = 'Código não possui o tamanho esperado (3 caracteres)'
+        first_shed = described_class.new(attributes_for(:shed, code: 'ASUD'))
+        second_shed = described_class.new(attributes_for(:shed, code: 'AS'))
+
+        expect(first_shed).not_to be_valid
+        expect(second_shed).not_to be_valid
+        expect(first_shed.errors.full_messages.length).to eq 1
+        expect(second_shed.errors.full_messages.length).to eq 1
+        expect(first_shed.errors.full_messages.last).to eq error_message
+        expect(second_shed.errors.full_messages.last).to eq error_message
+      end
+    end
+
+    context 'with format validation' do
+      it 'valid when postcode matches format' do
+        shed = described_class.new(attributes_for(:shed, postcode: %w[01234-567 08652-300 78451-123].sample))
+
+        expect(shed).to be_valid
+        expect(shed.errors).to be_empty
+      end
+
+      it 'invalid when postcode does not match format' do
+        shed = described_class.new(attributes_for(:shed, postcode: '451165415469'))
+
+        expect(shed).not_to be_valid
+        expect(shed.errors.full_messages.length).to eq 1
+        expect(shed.errors.full_messages.last).to eq 'Código postal deve ter o formato: 00000-000'
       end
     end
   end
