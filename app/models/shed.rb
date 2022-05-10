@@ -8,6 +8,12 @@ class Shed < ApplicationRecord
             :address,
             :postcode,
             :description, presence: true
+
   validates :code, length: { is: 3 }
-  validates :code, uniqueness: true
+  validates :code, :name, uniqueness: true
+
+  validates :area, numericality: { greater_than: 20 }
+
+  validates :postcode, format: { with: /\A\d{5}-\d{3}\z/,
+                                 message: 'deve ter o formato: 00000-000' }
 end
