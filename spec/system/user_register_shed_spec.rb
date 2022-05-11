@@ -24,7 +24,7 @@ describe 'User accesses warehouse register' do
       fill_in 'Nome:', with: Faker::Company.name
       fill_in 'Código:', with: Faker::Address.country_code_long
       fill_in 'Cidade:', with: Faker::Address.city
-      fill_in 'Área:', with: Faker::Number.decimal(l_digits: 2, r_digits: 3)
+      fill_in 'Área:', with: Faker::Number.number(digits: 5)
       fill_in 'Endereço:', with: Faker::Address.street_address
       fill_in 'Código postal:', with: %w[01234-567 08652-300 78451-123].sample
       fill_in 'Descrição:', with: Faker::Lorem.paragraph
