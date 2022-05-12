@@ -2,6 +2,7 @@ pt-BR:
   activerecord:
     models:
       shed: 'Galpão'
+      supplier: 'Fornecedor'
     attributes:
       shed:
         name: 'Nome'
@@ -11,3 +12,12 @@ pt-BR:
         address: 'Endereço'
         postcode: 'Código postal'
         description: 'Descrição'
+      supplier:
+        corporate_name: 'Nome Fantasia'
+        brand_name: 'Razão Social'
+        registration_number: 'CNPJ'
+        street_address: 'Endereço'
+        city: 'Cidade'
+        state: 'Estado'
+        email: 'E-mail'
+        phone_number: 'Telefone'
