@@ -19,6 +19,7 @@ describe 'The user accesses the suppliers screen' do
       visit suppliers_path
 
       expect(page).to have_content 'Fornecedores'
+      expect(page).not_to have_content 'Não existem fornecedores cadastrados.'
       expect(page).to have_content Supplier.first.brand_name
       expect(page).to have_content "#{Supplier.first.city} - #{Supplier.first.state}"
       expect(page).to have_content Supplier.last.brand_name
