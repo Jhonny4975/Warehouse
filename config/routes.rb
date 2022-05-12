@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :sheds, only: %i[show new create edit update destroy]
+  resources :suppliers
 end
