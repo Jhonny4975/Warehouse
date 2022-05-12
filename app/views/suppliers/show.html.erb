@@ -1,0 +1,8 @@
+<h2>Fornecedor <%= @supplier.brand_name %></h2>
+<h3><%= @supplier.corporate_name %></h3>
+
+<ul>
+  <li><strong>CNPJ:</strong> <%= @supplier.registration_number %></li>
+  <li><strong>Endereço:</strong> <%= @supplier.street_address %> - <%= @supplier.city %> - <%= @supplier.state %></li>
+  <li><strong>E-mail:</strong> <%= @supplier.email %></li>
+</ul>
