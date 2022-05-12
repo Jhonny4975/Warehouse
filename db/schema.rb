@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_10_024136) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_12_114256) do
   create_table "sheds", force: :cascade do |t|
     t.string "name"
     t.string "code"
@@ -23,6 +23,22 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_10_024136) do
     t.string "description"
     t.index ["code"], name: "index_sheds_on_code", unique: true
     t.index ["name"], name: "index_sheds_on_name", unique: true
+  end
+
+  create_table "suppliers", force: :cascade do |t|
+    t.string "corporate_name", null: false
+    t.string "brand_name", null: false
+    t.string "registration_number", null: false
+    t.string "street_address"
+    t.string "city"
+    t.string "state"
+    t.string "email", null: false
+    t.string "phone_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["brand_name"], name: "unique_brand_names", unique: true
+    t.index ["email"], name: "unique_emails", unique: true
+    t.index ["registration_number"], name: "unique_registration_numbers", unique: true
   end
 
 end
