@@ -7,8 +7,9 @@ class Supplier < ApplicationRecord
             :email, presence: true
 
   validates :brand_name,
-            :registration_number,
             :email, uniqueness: true
+
+  validates :registration_number, uniqueness: { case_sensitive: false }
 
   validates :registration_number, format: { with: %r{\A\d{2}\.\d{3}\.\d{3}/\d{4}-\d{2}\z},
                                             message: 'deve ter o formato: 00.000.000/0000-00' }
