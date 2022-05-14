@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class SuppliersController < ApplicationController
+  before_action :set_supplier, only: %i[show edit update]
+
   def index
     if Supplier.all.empty?
       @suppliers = []
@@ -11,9 +13,7 @@ class SuppliersController < ApplicationController
     end
   end
 
-  def show
-    @supplier = Supplier.find(params[:id])
-  end
+  def show; end
 
   def new
     @supplier = Supplier.new
@@ -31,6 +31,18 @@ class SuppliersController < ApplicationController
     end
   end
 
+  def edit; end
+
+  def update
+    if @supplier.update(supplier_params)
+      redirect_to @supplier, notice: 'Fornecedor atualizado com sucesso!'
+    else
+      flash.now[:notice] = 'Não foi possível atualizar o fornecedor.'
+
+      render :edit
+    end
+  end
+
   private
 
   def supplier_params
@@ -44,5 +56,9 @@ class SuppliersController < ApplicationController
       :email,
       :phone_number
     )
+  end
+
+  def set_supplier
+    @supplier = Supplier.find(params[:id])
   end
 end
