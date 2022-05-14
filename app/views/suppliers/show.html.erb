@@ -6,3 +6,5 @@
   <li><strong>Endereço:</strong> <%= @supplier.street_address %> - <%= @supplier.city %> - <%= @supplier.state %></li>
   <li><strong>E-mail:</strong> <%= @supplier.email %></li>
 </ul>
+
+<%= link_to 'Editar', edit_supplier_path(@supplier) %>
