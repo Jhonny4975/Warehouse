@@ -18,10 +18,16 @@ Style/Documentation:
 RSpec/MultipleExpectations:
   Enabled: false
 RSpec/ExampleLength:
-  Max: 20
+  Max: 50
 
 Metrics/BlockLength:
   IgnoredMethods: ['describe', 'context']
 
-Style/HashSyntax:
-  EnforcedShorthandSyntax: never
+Rails/FilePath:
+  Enabled: false
+
+Rails/I18nLocaleTexts:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Max: 10
